@@ -1,0 +1,14 @@
+{
+  "name": "tile-reduce-test",
+  "version": "1.0.0",
+  "description": "TileReduce test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jingsam",
+  "license": "MIT",
+  "dependencies": {
+    "tile-reduce": "^3.0.0"
+  }
+}
