@@ -2,8 +2,7 @@
 
 module.exports = function(data, tile, writeData, done) {
   var count = 0;
-  if (data.osm.roads) count += data.osm.roads.length;
-  //if (data.osm.buildings) count += data.osm.buildings.length;
-  //if (data.tiger.tiger) count += data.tiger.tiger.length;
+  // console.log(data);
+  if (data.mapzen_osm.roads) count += data.mapzen_osm.roads.length;
   done(null, count);
 };
