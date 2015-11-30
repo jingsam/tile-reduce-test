@@ -20,9 +20,9 @@ var remoteSources = [
         // raw: true
     // }，
     {
-      name: 'osm',
-      mbtiles: path.join(__dirname, '/latest.planet.z12.mbtiles'),
-      layers: ['osm']
+        name: 'osm',
+        mbtiles: path.join(__dirname, '/latest.planet.z12.mbtiles'),
+        layers: ['osm']
     }
 ];
 
