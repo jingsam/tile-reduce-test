@@ -13,6 +13,7 @@
   "author": "jingsam",
   "license": "MIT",
   "dependencies": {
-    "tile-reduce": "^3.0.0"
+    "tile-reduce": "^3.0.0",
+    "turf": "^2.0.2"
   }
 }
