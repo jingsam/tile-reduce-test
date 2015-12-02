@@ -3,7 +3,7 @@
 var tileReduce = require('tile-reduce');
 var path = require('path');
 
-var numFeatures = 0;
+var total = 0;
 
 var remoteSources = [
   // {
@@ -36,8 +36,8 @@ tileReduce({
     sources: remoteSources
   })
   .on('reduce', function(num) {
-    numFeatures += num;
+    total += num;
   })
   .on('end', function() {
-    console.log('total: %d', numFeatures);
+    console.log('total: %d', total);
   });
