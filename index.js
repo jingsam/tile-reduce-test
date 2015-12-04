@@ -3,8 +3,6 @@
 var tileReduce = require('tile-reduce');
 var path = require('path');
 
-var total = 0;
-
 var remoteSources = [
   // {
   // name: 'osm',
@@ -26,7 +24,10 @@ var remoteSources = [
   }
 ];
 
-tileReduce({
+var total = 0;
+var
+
+  tileReduce({
     // bbox: [-122.05862045288086, 36.93768132842635, -121.97296142578124, 37.00378647456494],
     // bbox: [-180.0,-85.1,180.0,85.1],
     bbox: [73.66, 3.86, 135.05, 53.55],
