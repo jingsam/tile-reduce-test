@@ -1,6 +1,7 @@
 'use strict';
 
 var turf = require('turf');
+var tilebelt = require('tilebelt');
 
 module.exports = function(tilelayers, tile, writeData, done) {
   var length = 0;
@@ -23,6 +24,22 @@ module.exports = function(tilelayers, tile, writeData, done) {
       length += line_length(feature, 'kilometers');
     }
   }
+
+  if (length == 0) {
+    done(null, length);
+    return;
+  }
+
+  var json = tilebelt.tileToGeoJSON(tile);
+  var density = length / turf.area(json) * 1000000;
+
+  writeData(JSON.stringify({
+    type: 'Feature',
+    properties: {
+      value: density
+    },
+    geometry: json
+  }) + ',');
 
   done(null, length);
 };
