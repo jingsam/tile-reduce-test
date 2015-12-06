@@ -2,7 +2,6 @@
 
 var tileReduce = require('tile-reduce');
 var path = require('path');
-var through2 = require('through2');
 var fs = require("fs");
 
 var remoteSources = [
@@ -27,7 +26,8 @@ var remoteSources = [
 ];
 
 var total = 0;
-var output = through2();
+var writeStream = fs.createWriteStream('result.json');
+writeStream.write('{"type": "FeatureCollection", "features": [');
 
 tileReduce({
     bbox: [-122.05862045288086, 36.93768132842635, -121.97296142578124, 37.00378647456494],
@@ -35,7 +35,7 @@ tileReduce({
     // bbox: [73.66, 3.86, 135.05, 53.55],
     // tiles: [[5276, 12757, 15]],
     zoom: 12,
-    output: output,
+    output: writeStream,
     map: path.join(__dirname, '/count.js'),
     sources: remoteSources
   })
@@ -43,20 +43,8 @@ tileReduce({
     total += num;
   })
   .on('end', function() {
+    writeStream.write(']}');
+    writeStream.close();
+
     console.log('total: %d', total);
   });
-
-
-var outputStr = '{"type": "FeatureCollection", "features": [';
-
-output.on('data', function(str) {
-  outputStr += str;
-});
-
-output.on('end', function() {
-  outputStr += ']}';
-
-  fs.writeFile('result.geojson', outputStr, function(err) {
-    if (err) throw err;
-  })
-});
