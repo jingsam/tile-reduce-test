@@ -15,6 +15,6 @@
   "dependencies": {
     "tile-reduce": "^3.0.0",
     "tilebelt": "^1.0.1",
-    "turf": "^2.0.2"
+    "turf": "^3.0.14"
   }
 }
